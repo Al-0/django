@@ -7,10 +7,12 @@
     <title>Your Review</title>
 </head>
 <body>
-    <form method="POST">
+    <form action="/" method="POST">
         {% csrf_token %}
-        <label for="username">Your name</label>
-        <input type="text" id="username" name="username">
+        {% comment %} {% if has_error %}
+            <p>This form contains an error! Username must not be empty.</p>
+        {% endif %} {% endcomment %}
+        {{ form }}
         <button type="submit">Send</button>
     </form>
 </body>
