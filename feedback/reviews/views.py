@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .forms import ReviewForm
 from .models import Review
@@ -69,12 +69,7 @@ class ReviewsListView(ListView):
         return data
 
 
-class ReviewDetailView(TemplateView):
+class ReviewDetailView(DetailView):
     template_name = 'reviews/review_detail.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        review_id = kwargs['id']
-        reviews = Review.objects.get(pk=review_id)
-        context['review'] = reviews
-        return context
+    model = Review
+    
