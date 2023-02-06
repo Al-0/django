@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Tag, Author, Post
+from .models import Tag, Author, Post, Comment
 
 class PostAdmin(admin.ModelAdmin):
     list_filter = ['author', 'tags', 'date']
@@ -10,4 +10,5 @@ class PostAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Tag)
 admin.site.register(Author)
+admin.site.register(Comment)
 admin.site.register(Post, PostAdmin)
