@@ -53,7 +53,7 @@
     {{ post.content|linebreaks }}
   </main>
 
-  {% if comments.length %}
+  {% if comments.count %}
   <section id="comments">
     <ul>
       {% for comment in comments %}
